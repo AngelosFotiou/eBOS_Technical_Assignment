@@ -10,6 +10,7 @@ import StatusCheck from './components/StatusCheck';
 import Home from './components/Home';
 import Users from './components/Users';
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import LanguageSwitcher from './components/LanguageSwitcher';
 
 //import './App.css';
 import Albums from './components/Albums';
@@ -38,7 +39,7 @@ import Albums from './components/Albums';
                             <Route path="/users" element={<Users />} />
                             <Route path="/albums" element={<Albums />} />
                         </Routes> </div> </div>
-
+                        <LanguageSwitcher />
         <StatusCheck onStatusChange={handleStatusChange} />
 
             </Router>);
