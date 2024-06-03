@@ -27,57 +27,27 @@ import Albums from './components/Albums';
                             <Link className="navbar-brand" to="/">MyApp</Link>
                             <div className="collapse navbar-collapse">
                                 <ul className="navbar-nav me-auto">
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/">Home</Link> </li>
-                                    {apiIsUp && (<> <li className="nav-item">
-                                    <Link className="nav-link" to="/photos">Photos</Link>
-                                </li> <li className="nav-item"> <Link className="nav-link" to="/users">Users</Link>
-                                    </li> <li className="nav-item"> <Link className="nav-link" to="/albums">Albums</Link> </li>
-                                </>)} </ul> </div> </div> </nav> <div className="container mt-5">
+                                    <li className="nav-item"> <Link className="nav-link" to="/">Home</Link> </li>
+                                    {apiIsUp && (<>
+                                        <li className="nav-item"> <Link className="nav-link" to="/photos">Photos</Link> </li>
+                                        <li className="nav-item"> <Link className="nav-link" to="/users">Users</Link></li>
+                                        <li className="nav-item"> <Link className="nav-link" to="/albums">Albums</Link> </li>
+                                        <li className="nav-item">  <LanguageSwitcher /> </li>
+                                    </>)}
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div className="container mt-5">
                         <Routes> <Route path="/" element={<Home />} />
                             <Route path="/photos" element={<Photos />} />
                             <Route path="/users" element={<Users />} />
                             <Route path="/albums" element={<Albums />} />
                         </Routes> </div> </div>
-                        <LanguageSwitcher />
         <StatusCheck onStatusChange={handleStatusChange} />
-
             </Router>);
-
-    //    <Router>
-    //            <div>
-    //                <li><Link to="/">Home</Link></li>
-    //            <nav>
-    //                <ul>    
-    //                        {apiIsUp && (
-    //                        <>
-    //                            <li><Link to="/photos">Manage Photos</Link></li>
-    //                            <li><Link to="/users">Manage Users</Link></li>
-    //                            <li><Link to="/albums">Manage Albums</Link></li>
-    //                        </>
-    //                    )}
-    //                </ul>
-    //            </nav>
-    //            <Routes>
-    //                <Route path="/" element={<Home />} />
-    //                <Route path="/photos" element={<Photos />} />
-    //                <Route path="/users" element={<Users />} />
-    //                <Route path="/albums" element={<Albums />} />
-    //                </Routes>
-    //                <StatusCheck onStatusChange={handleStatusChange} />
-
-    //        </div>
-    //    </Router>
-    //);
 };
 export default App;
-    //return (
-    //    <div className="App">
-    //        <UsersContainer />
-    //        <AlbumsContainer />
-    //        <PhotosContainer />
-    //    </div>
-    //);
 
 
 
