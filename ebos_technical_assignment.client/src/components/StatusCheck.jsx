@@ -1,38 +1,3 @@
-//import { useState, useEffect } from 'react';
-//import axios from 'axios';
-
-//const StatusCheck = ({ onStatusChange }) => {
-//    const [status, setStatus] = useState('Pending');
-
-//    useEffect(() => {
-//        const checkStatus = async () => {
-//            try {
-//                const response = await axios.get(`/api/Status`);
-//                if (response.status === 200) {
-//                    setStatus('API is up and running');
-//                    onStatusChange(true);
-//                } else {
-//                    setStatus('API is not responding');
-//                    onStatusChange(false);
-//                }
-//            } catch (error) {
-//                setStatus('API is not reachable');
-//                onStatusChange(false);
-//            }
-//        };
-
-//        checkStatus();
-//    }, [onStatusChange]);
-
-//    return (
-//        <div>
-//            <h2>Status Check</h2>
-//            <p>{status}</p>
-//        </div>
-//    );
-//};
-
-//export default StatusCheck;
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 

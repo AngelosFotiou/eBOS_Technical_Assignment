@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using eBOS_Technical_Assignment.Server.DbObjects;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace eBOS_Technical_Assignment.Server.Controllers
@@ -109,6 +110,16 @@ namespace eBOS_Technical_Assignment.Server.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("GetPaginated")]
+        public async Task <IActionResult> GetPaginatedPhotos([FromQuery] int _page ) {
+
+            int _limit = 10;
+            var paginatedPhotos = await _context.Photos.Skip(_page  * _limit).Take(_limit).ToListAsync();
+            
+            return Ok(paginatedPhotos); 
+        }
+
 
         private bool PhotoExists(int id)
         {

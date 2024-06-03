@@ -1,77 +1,64 @@
-//import { useEffect, useState } from 'react';
-//import './App.css';
 
-//function App() {
-//    const [forecasts, setForecasts] = useState();
 
-//    useEffect(() => {
-//        populateWeatherData();
-//    }, []);
 
-//    const contents = forecasts === undefined
-//        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-//        : <table className="table table-striped" aria-labelledby="tabelLabel">
-//            <thead>
-//                <tr>
-//                    <th>Date</th>
-//                    <th>Temp. (C)</th>
-//                    <th>Temp. (F)</th>
-//                    <th>Summary</th>
-//                </tr>
-//            </thead>
-//            <tbody>
-//                {forecasts.map(forecast =>
-//                    <tr key={forecast.date}>
-//                        <td>{forecast.date}</td>
-//                        <td>{forecast.temperatureC}</td>
-//                        <td>{forecast.temperatureF}</td>
-//                        <td>{forecast.summary}</td>
-//                    </tr>
-//                )}
-//            </tbody>
-//        </table>;
-
-//    return (
-//        <div>
-//            <h1 id="tabelLabel">Weather forecast</h1>
-//            <p>This component demonstrates fetching data from the server.</p>
-//            {contents}
-//        </div>
-//    );
-
-//    async function populateWeatherData() {
-//        const response = await fetch('weatherforecast');
-//        const data = await response.json();
-//        setForecasts(data);
-//    }
-//}
 
 
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link  } from 'react-router-dom';
+import Photos from './components/Photos';
 import axios from 'axios';
-import UsersContainer from './containers/UsersContainer';
-import AlbumsContainer from './containers/AlbumsContainer';
-import PhotosContainer from './containers/PhotosContainer';
+//import UsersContainer from './containers/UsersContainer';
+//import AlbumsContainer from './containers/AlbumsContainer';
+//import PhotosContainer from './containers/PhotosContainer';
 import Loading from './components/Loading';
 import StatusCheck from './components/StatusCheck';
 import './App.css';
+import Albums from './components/Albums';
     const App = () => {
-        const [isApiUp, setIsApiUp] = useState(false);
-
+        //const [isApiUp, setIsApiUp] = useState(false);
+        const [apiIsUp, setApiIsUp] = useState(false);
         const handleStatusChange = (status) => {
             setIsApiUp(status);
         };
 
+        //return (
+        //    <div>
+        //       <h1>Photo Album Application</h1>
+        //        <StatusCheck onStatusChange={handleStatusChange} />
+        //        {
+        //           isApiUp &&
+        //        }
+                
+        //    </div>
+        //);
         return (
-            <div>
-                <h1>Photo Album Application</h1>
-                <StatusCheck onStatusChange={handleStatusChange} />
-                {isApiUp
-                    // && <Loading/>
-                }
-            </div>
+            <Router>
+                <div>
+                    <StatusCheck onStatusChange={setApiIsUp} />
+                    {apiIsUp && (
+                        <Link to="/photos">
+                            <button>Photos</button>
+                        </Link>
+                        //<Link to="/users">
+                        //    <button>API is Up</button>
+                        //</Link><Link to="/ambums">
+                        //    <button>API is Up</button>
+                        //</Link>
+                    )}
+                    <Routes>
+                        {<Route path="/photos" element={<Photos />} />}
+
+                       {/*<Route path="/ambums" element={<Albums/>} />*/}
+                       {/* <Route path="/users" element={<Users/>} />*/}
+
+                    </Routes>
+                </div>
+            </Router>
         );
 
+
+};
+export default App;
     //return (
     //    <div className="App">
     //        <UsersContainer />
@@ -79,9 +66,9 @@ import './App.css';
     //        <PhotosContainer />
     //    </div>
     //);
-};
 
-export default App;
+
+
 
 
 

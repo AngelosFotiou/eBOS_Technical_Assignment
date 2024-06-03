@@ -27,14 +27,14 @@ So i took the tempate as provieded in visual studio 2022.
 
 2. **Write Script**: Copy the following script into `ResetDatabase.ps1`:
 
-   ``powershell
-   # Delete Migration Files
+##Powershell
+   ###Delete Migration Files
    Remove-Item -Path Migrations\* -Force
 
-   # Add New Migration
+   ### Add New Migration
    dotnet ef migrations add InitialCreate
 
-   # Update Database
+   ### Update Database
    dotnet ef database update
 
 
