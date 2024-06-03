@@ -130,6 +130,14 @@ namespace eBOS_Technical_Assignment.Server.Controllers
             return NoContent();
         }
 
+
+        [HttpGet("GetPaginated")]
+        public async Task<IActionResult> GetPaginatedPhotos([FromQuery] int _page)
+        {
+            int _limit = 10;
+            var paginated = await _context.Albums.Skip(_page * _limit).Take(_limit).ToListAsync();
+            return Ok(paginated);
+        }
         private bool AlbumExists(int id)
         {
             return _context.Albums.Any(e => e.Id == id);

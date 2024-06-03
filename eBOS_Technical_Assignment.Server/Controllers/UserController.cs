@@ -123,6 +123,18 @@ namespace eBOS_Technical_Assignment.Server.Controllers
             return NoContent();
         }
 
+
+
+        [HttpGet("GetPaginated")]
+        public async Task<IActionResult> GetPaginatedPhotos([FromQuery] int _page)
+        {
+
+            int _limit = 10;
+            var paginatedUsers = await _context.Users.Skip(_page * _limit).Take(_limit).ToListAsync();
+
+            return Ok(paginatedUsers);
+        }
+
         private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.Id == id);

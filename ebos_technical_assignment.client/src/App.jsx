@@ -6,57 +6,68 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link  } from 'react-router-dom';
 import Photos from './components/Photos';
-import axios from 'axios';
-//import UsersContainer from './containers/UsersContainer';
-//import AlbumsContainer from './containers/AlbumsContainer';
-//import PhotosContainer from './containers/PhotosContainer';
-import Loading from './components/Loading';
 import StatusCheck from './components/StatusCheck';
-import './App.css';
+import Home from './components/Home';
+import Users from './components/Users';
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+//import './App.css';
 import Albums from './components/Albums';
     const App = () => {
-        //const [isApiUp, setIsApiUp] = useState(false);
-        const [apiIsUp, setApiIsUp] = useState(false);
+        const [apiIsUp, setIsApiUp] = useState(false);
         const handleStatusChange = (status) => {
             setIsApiUp(status);
         };
-
-        //return (
-        //    <div>
-        //       <h1>Photo Album Application</h1>
-        //        <StatusCheck onStatusChange={handleStatusChange} />
-        //        {
-        //           isApiUp &&
-        //        }
-                
-        //    </div>
-        //);
         return (
             <Router>
                 <div>
-                    <StatusCheck onStatusChange={setApiIsUp} />
-                    {apiIsUp && (
-                        <Link to="/photos">
-                            <button>Photos</button>
-                        </Link>
-                        //<Link to="/users">
-                        //    <button>API is Up</button>
-                        //</Link><Link to="/ambums">
-                        //    <button>API is Up</button>
-                        //</Link>
-                    )}
-                    <Routes>
-                        {<Route path="/photos" element={<Photos />} />}
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                        <div className="container">
+                            <Link className="navbar-brand" to="/">MyApp</Link>
+                            <div className="collapse navbar-collapse">
+                                <ul className="navbar-nav me-auto">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/">Home</Link> </li>
+                                    {apiIsUp && (<> <li className="nav-item">
+                                    <Link className="nav-link" to="/photos">Photos</Link>
+                                </li> <li className="nav-item"> <Link className="nav-link" to="/users">Users</Link>
+                                    </li> <li className="nav-item"> <Link className="nav-link" to="/albums">Albums</Link> </li>
+                                </>)} </ul> </div> </div> </nav> <div className="container mt-5">
+                        <Routes> <Route path="/" element={<Home />} />
+                            <Route path="/photos" element={<Photos />} />
+                            <Route path="/users" element={<Users />} />
+                            <Route path="/albums" element={<Albums />} />
+                        </Routes> </div> </div>
 
-                       {/*<Route path="/ambums" element={<Albums/>} />*/}
-                       {/* <Route path="/users" element={<Users/>} />*/}
+        <StatusCheck onStatusChange={handleStatusChange} />
 
-                    </Routes>
-                </div>
-            </Router>
-        );
+            </Router>);
 
+    //    <Router>
+    //            <div>
+    //                <li><Link to="/">Home</Link></li>
+    //            <nav>
+    //                <ul>    
+    //                        {apiIsUp && (
+    //                        <>
+    //                            <li><Link to="/photos">Manage Photos</Link></li>
+    //                            <li><Link to="/users">Manage Users</Link></li>
+    //                            <li><Link to="/albums">Manage Albums</Link></li>
+    //                        </>
+    //                    )}
+    //                </ul>
+    //            </nav>
+    //            <Routes>
+    //                <Route path="/" element={<Home />} />
+    //                <Route path="/photos" element={<Photos />} />
+    //                <Route path="/users" element={<Users />} />
+    //                <Route path="/albums" element={<Albums />} />
+    //                </Routes>
+    //                <StatusCheck onStatusChange={handleStatusChange} />
 
+    //        </div>
+    //    </Router>
+    //);
 };
 export default App;
     //return (

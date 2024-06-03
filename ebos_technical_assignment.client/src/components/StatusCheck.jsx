@@ -38,10 +38,15 @@ const StatusCheck = ({ onStatusChange }) => {
     }, [onStatusChange]);
 
     return (
-        <div>
+        //<div>
+        //    <h2>Status Check</h2>
+        //    <p>{status}</p>
+
+        //</div>
+        <div className="container mt-5">
             <h2>Status Check</h2>
-            <p>{status}</p>
-        </div>
+            <div className={`alert ${status === 'API is up and running' ? 'alert-success' : 'alert-danger'}`}>
+                {status} </div> </div>
     );
 };
 
