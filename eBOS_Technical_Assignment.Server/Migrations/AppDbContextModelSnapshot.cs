@@ -24,7 +24,10 @@ namespace eBOS_Technical_Assignment.Server.Migrations
             modelBuilder.Entity("eBOS_Technical_Assignment.Server.DbObjects.Album", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -41,7 +44,10 @@ namespace eBOS_Technical_Assignment.Server.Migrations
             modelBuilder.Entity("eBOS_Technical_Assignment.Server.DbObjects.Photo", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AlbumId")
                         .HasColumnType("int");

@@ -4,7 +4,7 @@ namespace eBOS_Technical_Assignment.Server.DbObjects
 {
     public class Photo
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+       // [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public int Id { get; set; }
 
         public int AlbumId { get; set; }

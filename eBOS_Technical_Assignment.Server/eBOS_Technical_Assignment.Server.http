@@ -1,6 +1,0 @@
-@eBOS_Technical_Assignment.Server_HostAddress = http://localhost:5036
-
-GET {{eBOS_Technical_Assignment.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

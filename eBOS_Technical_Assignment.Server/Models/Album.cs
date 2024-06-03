@@ -5,7 +5,7 @@ namespace eBOS_Technical_Assignment.Server.DbObjects
     public class Album
     {
         public int UserId { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+      //  [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public string Title { get; set; }
         public Album()

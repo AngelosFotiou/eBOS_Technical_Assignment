@@ -11,7 +11,7 @@ using eBOS_Technical_Assignment.Server.DbObjects;
 namespace eBOS_Technical_Assignment.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240603052013_InitialCreate")]
+    [Migration("20240603081549_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -27,7 +27,10 @@ namespace eBOS_Technical_Assignment.Server.Migrations
             modelBuilder.Entity("eBOS_Technical_Assignment.Server.DbObjects.Album", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -44,7 +47,10 @@ namespace eBOS_Technical_Assignment.Server.Migrations
             modelBuilder.Entity("eBOS_Technical_Assignment.Server.DbObjects.Photo", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AlbumId")
                         .HasColumnType("int");

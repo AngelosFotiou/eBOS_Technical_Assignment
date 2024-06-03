@@ -36,11 +36,11 @@ namespace eBOS_Technical_Assignment.Server.Controllers
                 await transaction.CommitAsync();
                 return Created();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await transaction.RollbackAsync();
                 // Return a 500 Internal Server Error response
-                return StatusCode(500, "An error occurred while adding photos.");
+                return StatusCode(500, $"An error occurred while adding photos.{ex.Message} InnerException:{ex.InnerException?.Message ?? string.Empty}");
             }
         }
 

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eBOS_Technical_Assignment.Server.DbObjects
 {
@@ -19,11 +18,22 @@ namespace eBOS_Technical_Assignment.Server.DbObjects
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
+               .Property(p => p.Id)
+               .ValueGeneratedOnAdd();
+            modelBuilder.Entity<User>()
                 .OwnsOne(u => u.Address)
                 .OwnsOne(a => a.Geo);
 
             modelBuilder.Entity<User>()
                 .OwnsOne(u => u.Company);
+
+            modelBuilder.Entity<Photo>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Album>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();
         }
 
     }
