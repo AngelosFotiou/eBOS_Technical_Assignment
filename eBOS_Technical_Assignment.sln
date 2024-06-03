@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBOS_Technical_Assignment.Server", "eBOS_Technical_Assignment.Server\eBOS_Technical_Assignment.Server.csproj", "{83BDA9BE-3466-4986-A2F3-1DAA75A62FFA}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ebos_technical_assignment.client", "ebos_technical_assignment.client\ebos_technical_assignment.client.esproj", "{196A1D45-E4F9-4C78-8A5B-F705FC66C093}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83BDA9BE-3466-4986-A2F3-1DAA75A62FFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83BDA9BE-3466-4986-A2F3-1DAA75A62FFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83BDA9BE-3466-4986-A2F3-1DAA75A62FFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83BDA9BE-3466-4986-A2F3-1DAA75A62FFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{196A1D45-E4F9-4C78-8A5B-F705FC66C093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{196A1D45-E4F9-4C78-8A5B-F705FC66C093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{196A1D45-E4F9-4C78-8A5B-F705FC66C093}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{196A1D45-E4F9-4C78-8A5B-F705FC66C093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{196A1D45-E4F9-4C78-8A5B-F705FC66C093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{196A1D45-E4F9-4C78-8A5B-F705FC66C093}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {742FA605-9B7B-4B21-8D70-2B079270DBA9}
+	EndGlobalSection
+EndGlobal
