@@ -2,31 +2,24 @@
 
 ##Technical Requirements:
 
-    1. React Framework:
-        ◦ Utilize React.js to build the frontend of the photo album application. **DONE**
-		
-	2.  ~~Dummy API Integration~~
+###DONE: 
+
+    ◦ React Framework.
+    ◦ API Development (Optional).	
+    ◦ Bootstrap 5/Ant Design.		
+    ◦ Routing:
+    ◦ Internalization (i18n)
 	
-    3. API Development (Optional):
-        ◦ Develop and Connect the API with the Front-End application (GraphQL, Rest API) **DONE**
-		
-    4. Bootstrap 5/Ant Design:
-        ◦ Integrate Bootstrap 5/Ant Design framework for responsive and mobile-first design. **DONE**
-        ◦ Utilize Bootstrap/Ant Design components and utilities for styling and layout.**DONE**
-		
-    5. Redux State Management (Optional):
+###Done Parsialy:
+
         ◦ Implement Redux for state management within the application.
-        ◦ Set up actions, reducers, and the Redux store to manage data and application state. **DONE PARSIALY**
+        ◦ Set up actions, reducers, and the Redux store to manage data and application state. 
+		◦ Define routes for the main album view and individual photo details view.
 		
-    6. Routing:
-        ◦ Implement client-side routing using react-router-dom to navigate between different views/pages within the application. **DONE**
-        ◦ Define routes for the main album view and individual photo details view.
+###Not ImpLimented:
+
+		Dummy API Integration
 		
-    7. Internalization (i18n):
-        ◦ Support internalization (i18n) for the application to be localized in multiple languages. **DONE**
-        ◦ Utilize react-intl or similar libraries to manage translations and language switching. **DONE**
-
-
 # React + Vite
 This is literaly the first time doing react so have that in mind.
 So i took the tempate as provieded in visual studio 2022.
