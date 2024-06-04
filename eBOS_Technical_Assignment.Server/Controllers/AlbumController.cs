@@ -41,6 +41,21 @@ namespace eBOS_Technical_Assignment.Server.Controllers
             return album;
         }
 
+        [HttpGet("PhotoCount")]
+        public async Task<int> GetAlbumPhotoCount([FromQuery] int id)
+        {
+            var album = await _context.Albums.FindAsync(id);
+
+            if (!AlbumExists(id))
+            {
+                return 0;
+            }
+
+            int photoCount = await _context.Photos.Where(a => a.AlbumId == id).CountAsync();
+        
+            return photoCount;
+        }
+
         // POST: api/albums
         [HttpPost]
         public async Task<ActionResult<Album>> PostAlbum(Album album)

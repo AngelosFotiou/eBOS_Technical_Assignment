@@ -68,9 +68,9 @@ namespace eBOS_Technical_Assignment.Server.Controllers
         }
 
         [HttpPut()]
-        public async Task<IActionResult> PutPhoto(DbObjects.Photo photo)
+        public async Task<IActionResult> PutPhoto(Photo photo)
         {
-            if (!photo.IsValid() || PhotoExists(photo.Id))
+            if (!photo.IsValid() || !PhotoExists(photo.Id))
             {
                 return BadRequest();
             }
