@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Loading from './Loading';
+import { useSearchParams } from 'react-router-dom';
 const Photos = () => {
     const [photos, setPhotos] = useState([]);
     const [page, setPage] = useState(0);
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true);
     const [isFirst, setisFirst] = useState(true);
-
+    const [error, setError] = useState(null);
+    const [searchParams] = useSearchParams();
     const apiUrl = '/api';///import.meta.env.VITE_API_URL; 
 
     useEffect(() => {
         const fetchPhotos = async () => {
             setLoading(true);
+
+            const albumId = searchParams.get('albumId');
+            let url = `${apiUrl}/api/Photos/GetPaginated?_page=${page}`;
+
+            if (albumId) {
+                url += `&_album=${albumId}`;
+            }
+
+
             try {
-                const response = await axios.get(`${apiUrl}/api/Photos/GetPaginated?_page=${page}`);
+                const response = await axios.get(url);
                 setLoading(false);
                 if (response.data.length > 0) {
                     setPhotos((prevPhotos) => [...response.data]);
@@ -25,10 +36,14 @@ const Photos = () => {
                     setisFirst(false);
 
                 }
-            } catch (error) {
-                console.error('Error fetching photos:', error);
-                setLoading(false);
             }
+            catch (err) {
+                setError('Error fetching Photos');
+                console.error('Error fetching Albums:', error);
+
+            } finally {
+            setLoading(false);
+        }
         };
 
         fetchPhotos();
@@ -48,6 +63,10 @@ const Photos = () => {
    
 
     if (loading) { return <Loading />; }
+
+    if (error) {
+        return <div className="alert alert-danger" role="alert">{error}</div>;
+    }
 
     return (
       
