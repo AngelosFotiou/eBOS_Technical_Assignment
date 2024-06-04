@@ -1,8 +1,8 @@
 # eBOS_Technical_Assignment
 
-##Technical Requirements:
+#Technical Requirements:
 
-###DONE: 
+##DONE: 
 
     ◦ React Framework.
     ◦ API Development (Optional).	
@@ -10,13 +10,13 @@
     ◦ Routing:
     ◦ Internalization (i18n)
 	
-###Done Parsialy:
+##Done Parsialy:
 
         ◦ Implement Redux for state management within the application.
         ◦ Set up actions, reducers, and the Redux store to manage data and application state. 
 		◦ Define routes for the main album view and individual photo details view.
 		
-###Not ImpLimented:
+##Not ImpLimented:
 
 		Dummy API Integration
 		
