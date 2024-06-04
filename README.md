@@ -1,6 +1,7 @@
 # eBOS_Technical_Assignment
 
 ##Technical Requirements:
+
     1. React Framework:
         ◦ Utilize React.js to build the frontend of the photo album application. **DONE**
 		
