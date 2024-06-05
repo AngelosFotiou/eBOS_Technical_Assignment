@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Loading from './Loading';
@@ -47,21 +46,25 @@ const Albums = () => {
         fetchAlbums();
     }, [page]);
 
-    //useEffect(() => {
-    //    const fetchPhotosCount = async () => {
-    //        const promises = albums.map(async (album) => {
-    //            try {
-    //                const response = await axios.get(`${apiUrl}/api/Albums/PhotoCount${album.id}`);
-    //                album.photoCount = response.data;
-    //            } catch (error)
-    //            {
-    //                console.error(`Error fetching photos for album ${album.id}`, error);
-    //                setError('Error fetching photos count');
-    //            }
-    //        });
-    //        await Promise.all(promises); setAlbums([...albums]);
-    //    }; fetchPhotosCount();
-    //}, [albums]);
+    useEffect(() => {
+        const fetchPhotosCount = async () => {
+            try {
+                const updatedAlbums = await Promise.all(albums.map(async (album) => {
+                    const response = await axios.get(`${apiUrl}/api/Albums/PhotoCount?id=${album.id}`);
+                    return { ...album, photoCount: response.data };
+                }));
+                setAlbums(updatedAlbums);
+            } catch (error) {
+                console.error('Error fetching photos count', error);
+                setError('Error fetching photos count');
+            }
+        };
+
+        if (albums.length > 0) {
+            fetchPhotosCount();
+        }
+    }, [albums, apiUrl]);
+
 
 
 if (loading) { return <Loading />; }
@@ -138,7 +141,6 @@ if (error) {
                         <div className="card-body">
                             <p className="card-text">{album.title}</p>
                             <Link to={`/photos?albumId=${album.id}`} className="btn btn-success m-2"> Albums Photos </Link>
-                            {/*  image count ??*/}
                             <p className="card-text">Image Count: {album.photoCount}</p>
                             <button className="btn btn-danger m-2" onClick={() => handleDeleteAlbum(album.id)}>Delete</button>
                             <button className="btn btn-warning m-2" onClick={() => handleEditAlbum(album)}>Edit</button>

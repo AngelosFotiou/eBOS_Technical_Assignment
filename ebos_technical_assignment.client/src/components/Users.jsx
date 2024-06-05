@@ -79,10 +79,6 @@ const Users = () => {
                 {hasMore && (<button className="btn btn-primary" onClick={handleLoadMore}> Load Next Set </button>)}
             </div>
         </div>
-                                 
-             
-
-
     );
 };
 

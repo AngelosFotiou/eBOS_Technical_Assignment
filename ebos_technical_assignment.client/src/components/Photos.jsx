@@ -124,25 +124,6 @@ const handleEditSubmit = async (e) => {
     }
 
     return (
-      
-
-        //<div className="container">
-        //    <div className="row row-cols-1 row-cols-md-3 g-4"> {
-        //        photos.map((photo) => (<div key={photo.id} className="col">
-        //            <div className="card h-100">
-        //                <img src={photo.url} className="card-img-top" alt={photo.title} />
-        //                <div className="card-body">
-        //                    <p className="card-text">{photo.title}</p>
-        //                </div>
-        //            </div>
-        //        </div>))}
-        //    </div>
-        //    <div className="d-flex justify-content-between mt-4">
-        //        {!isFirst && (<button className="btn btn-primary" onClick={LoadPrevMore}> Load Previous Set </button>)}
-        //        {hasMore && (<button className="btn btn-primary" onClick={handleLoadMore}> Load Next Set </button>)}
-        //    </div>
-        //</div> 
-
         <div className="container">
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {photos.map((photo) => (
@@ -196,55 +177,6 @@ const handleEditSubmit = async (e) => {
                     </div>
                 </div>
             )}
-
-            {/* Modal for editing photo */}
-            {/*{editPhoto && (*/}
-            {/*    <div className="modal fade show d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>*/}
-            {/*        <div className="modal-dialog" role="document">*/}
-            {/*            <div className="modal-content">*/}
-            {/*                <div className="modal-header">*/}
-            {/*                    <h5 className="modal-title">Edit Photo</h5>*/}
-            {/*                    <button type="button" className="close" aria-label="Close" onClick={closeEditModal}>*/}
-            {/*                        <span aria-hidden="true">&times;</span>*/}
-            {/*                    </button>*/}
-            {/*                </div>*/}
-            {/*                <form onSubmit={handleEditSubmit}>*/}
-            {/*                    <div className="modal-body">*/}
-            {/*                        <div className="form-group">*/}
-            {/*                            <label htmlFor="title">Title</label>*/}
-            {/*                            <input*/}
-            {/*                                type="text"*/}
-            {/*                                className="form-control"*/}
-            {/*                                id="title"*/}
-            {/*                                name="title"*/}
-            {/*                                value={editPhoto.title}*/}
-            {/*                                onChange={handleEditChange}*/}
-            {/*                                required*/}
-            {/*                            />*/}
-            {/*                        </div>*/}
-            {/*                        <div className="form-group">*/}
-            {/*                            <label htmlFor="albumId">Album ID</label>*/}
-            {/*                            <input*/}
-            {/*                                type="number"*/}
-            {/*                                className="form-control"*/}
-            {/*                                id="albumId"*/}
-            {/*                                name="albumId"*/}
-            {/*                                value={editPhoto.albumId}*/}
-            {/*                                onChange={handleEditChange}*/}
-            {/*                                required*/}
-            {/*                            />*/}
-            {/*                        </div>*/}
-            {/*                    </div>*/}
-            {/*                    <div className="modal-footer">*/}
-            {/*                        <button type="button" className="btn btn-secondary" onClick={closeEditModal}>Close</button>*/}
-            {/*                        <button type="submit" className="btn btn-primary">Save changes</button>*/}
-            {/*                    </div>*/}
-            {/*                </form>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*)}*/}
-
         </div>
 
     );

@@ -40,9 +40,11 @@ import Albums from './components/Albums';
                     </nav>
                     <div className="container mt-5">
                         <Routes> <Route path="/" element={<Home />} />
-                            <Route path="/photos" element={<Photos  />} />
                             <Route path="/users" element={<Users />} />
-                            <Route path="/albums" element={<Albums inputVall= { '0' }/>} />
+                            <Route path="/albums" element={<Albums
+                              //  inputVall={'0'}
+                            />} />
+                            <Route path="/photos" element={<Photos  />} />
                         </Routes> </div> </div>
         <StatusCheck onStatusChange={handleStatusChange} />
             </Router>);

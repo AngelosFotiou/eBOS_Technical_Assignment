@@ -44,16 +44,14 @@ namespace eBOS_Technical_Assignment.Server.Controllers
         [HttpGet("PhotoCount")]
         public async Task<int> GetAlbumPhotoCount([FromQuery] int id)
         {
-            var album = await _context.Albums.FindAsync(id);
-
-            if (!AlbumExists(id))
+            if (await AlbumExistsAsync(id))
             {
-                return 0;
+                //int photoCount = await _context.Photos.Where(a => a.AlbumId == id).CountAsync();
+
+                return await _context.Photos.CountAsync(p => p.AlbumId == id); ;
             }
 
-            int photoCount = await _context.Photos.Where(a => a.AlbumId == id).CountAsync();
-        
-            return photoCount;
+            return 0;
         }
 
         // POST: api/albums
@@ -116,13 +114,13 @@ namespace eBOS_Technical_Assignment.Server.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AlbumExists(id))
+                if (await AlbumExistsAsync(id))
                 {
-                    return NotFound();
+                    throw;
                 }
                 else
                 {
-                    throw;
+                    return NotFound();
                 }
             }
 
@@ -160,9 +158,9 @@ namespace eBOS_Technical_Assignment.Server.Controllers
              paginated = await _context.Albums.Skip(_page * _limit).Take(_limit).ToListAsync();
             return Ok(paginated);
         }
-        private  bool AlbumExists(int id)
+        private async Task<bool> AlbumExistsAsync(int id)
         {
-            return _context.Albums.Any(e => e.Id == id);
+            return await _context.Albums.AnyAsync(e => e.Id == id);
         }
     }
 
