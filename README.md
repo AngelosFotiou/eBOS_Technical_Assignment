@@ -58,4 +58,15 @@ i proxy the server url in order to avoid cors.
    ### Update Database
    dotnet ef database update
 
+   ## Alternative via visual studio
+   Delete the Migrations folder 
+   
+   Open Package Manager Console  
+   Individual components > Code tools > NuGet package manager 
+   
+   add-migration initialcreate 
+   update-database
+   
+   ## Data Loading
+   To load data to the app use postman or swagger utilising the 3 json files you have provided to the corisponting controlers dataclass with the method "add-multiple" to load the 3 lists of json objects. 
 
