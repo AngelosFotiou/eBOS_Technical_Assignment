@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Loading from './Loading';
+import CreateAlbum from './CreateAlbum';
 import { useSearchParams, Link } from 'react-router-dom';
 const Albums = () => {
     const [albums, setAlbums] = useState([]);
@@ -29,11 +30,10 @@ const Albums = () => {
                     const response = await axios.get(url);
                     if (response.data.length > 0) {
                     setAlbums((prevAlbums) => [...response.data]);
-                    setisFirst(false);
 
                 } else {
                     setHasMore(false);
-                    setisFirst(false);
+               
                 }
                 } catch (err) {
                 setError('Error fetching albums');
@@ -119,6 +119,8 @@ if (error) {
 
     const handleLoadMore = () => {
         setPage((prevPage) => prevPage + 1);
+        setisFirst(false);
+
     };
 
     const LoadPrevMore = () => {
@@ -133,61 +135,30 @@ if (error) {
         });
     };
 
-    return (
+    return (           
+        
+ 
         <div className="container">
-            <div className="row row-cols-1 row-cols-md-3 g-4"> {
-                albums.map((album) => (<div key={album.id} className="col">
-                    <div className="card h-100">
-                        <div className="card-body">
-                            <p className="card-text">{album.title}</p>
-                            <Link to={`/photos?albumId=${album.id}`} className="btn btn-success m-2"> Albums Photos </Link>
-                            <p className="card-text">Image Count: {album.photoCount}</p>
-                            <button className="btn btn-danger m-2" onClick={() => handleDeleteAlbum(album.id)}>Delete</button>
-                            <button className="btn btn-warning m-2" onClick={() => handleEditAlbum(album)}>Edit</button>
-                        </div>
-                    </div>
-                </div>))}
+            <div>
+                <Link to="/create-album" className="btn btn-primary m-2">Create Album</Link>
+            </div> <div className="row row-cols-1 row-cols-md-3 g-4"> {
+                albums.map(album => (<div key={album.id} className="col">
+                    <div className="card h-100"> <div className="card-body">
+                        <p className="card-text">{album.title}</p>
+                        <Link to={`/photos?albumId=${album.id}`}
+                            className="btn btn-success m-2">Albums Photos</Link>
+                        <p className="card-text">Image Count: {album.photoCount}
+                        </p> <button className="btn btn-danger m-2" onClick={() => handleDeleteAlbum(album.id)}>Delete</button>
+                        <button className="btn btn-warning m-2" onClick={() => handleEditAlbum(album)}>Edit</button>
+                    </div> </div> </div>))} </div> <div className="d-flex justify-content-between mt-4">
+                {!isFirst && (<button className="btn btn-primary" onClick={LoadPrevMore}>
+                    Load Previous Set
+                </button>)}
+                {hasMore && (<button className="btn btn-primary" onClick={handleLoadMore}>
+                    Load Next Set
+                </button>)}
             </div>
-            <div className="d-flex justify-content-between mt-4">
-                {!isFirst && (<button className="btn btn-primary" onClick={LoadPrevMore}> Load Previous Set </button>)}
-                {hasMore && (<button className="btn btn-primary" onClick={handleLoadMore}> Load Next Set </button>)}
-            </div>
-        </div>
-
-      
-
-            //{editAlbum && (
-            //    <div className="modal" tabIndex="-1" role="dialog">
-            //        <div className="modal-dialog" role="document">
-            //            <div className="modal-content">
-            //                <div className="modal-header">
-            //                    <h5 className="modal-title">Edit Album</h5>
-            //                    <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => setEditAlbum(null)}>
-            //                        <span aria-hidden="true">&times;</span>
-            //                    </button>
-            //                </div>
-            //                <form onSubmit={handleEditAlbumSubmit}>
-            //                    <div className="modal-body">
-            //                        <div className="form-group">
-            //                            <label htmlFor="title">Title</label>
-            //                            <input type="text" className="form-control" id="title" name="title" value={editAlbum.title} onChange={handleEditAlbumChange} required />
-            //                        </div>
-            //                        <div className="form-group">
-            //                            <label htmlFor="userId">User ID</label>
-            //                            <input type="text" className="form-control" id="userId" name="userId" value={editAlbum.userId} onChange={handleEditAlbumChange} required />
-            //                        </div>
-            //                    </div>
-            //                    <div className="modal-footer">
-            //                        <button type="button" className="btn btn-secondary" onClick={() => setEditAlbum(null)}>Close</button>
-            //                        <button type="submit" className="btn btn-primary">Save changes</button>
-            //                    </div>
-            //                </form>
-            //            </div>
-            //        </div>
-            //    </div>
-            //)}
-       // </div>
-
+        </div> 
     );
 };
 export default Albums;

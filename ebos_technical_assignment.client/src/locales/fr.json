@@ -1,6 +1,16 @@
 {
-  "welcome": "Bienvenue",
-  "loading": "Chargement...",
-  "load_more": "Charger plus",
-  "load_previous": "Charger précédent"
+  "welcome": "Bienvenido a la Galería de Fotos",
+  "welcome2": "Explorez notre collection de belles photos.",
+  "status_check": "Verificación de Estado",
+  "api_up": "La API está en funcionamiento",
+  "api_down": "La API no responde",
+  "load_previous": "Cargar Conjunto Anterior",
+  "load_next": "Cargar Siguiente Conjunto",
+  "users": "Utilisatrices",
+  "albums": "Álbumes",
+  "photos": "Fotos",
+  "image_count": "Conteo de Imágenes",
+  "create_album": "Crear Álbum",
+  "delete": "Eliminar",
+  "edit": "Editar"
 }

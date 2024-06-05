@@ -1,6 +1,16 @@
 {
-  "welcome": "Welcome",
-  "loading": "Loading...",
-  "load_more": "Load More",
-  "load_previous": "Load Previous"
+  "welcome": "Welcome to the Photo Gallery",
+  "welcome2": "Explore our collection of beautiful photos.",
+  "status_check": "Status Check",
+  "api_up": "API is up and running",
+  "api_down": "API is not responding",
+  "load_previous": "Load Previous Set",
+  "load_next": "Load Next Set",
+  "users": "Users",
+  "albums": "Albums",
+  "photos": "Photos",
+  "image_count": "Image Count",
+  "create_album": "Create Album",
+  "delete": "Delete",
+  "edit": "Edit"
 }

@@ -1,11 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
+
 const Home = () => {
+    const { t } = useTranslation();
     return (
         <div className="container text-center mt-5">
             <div className="row">
                 <div className="col">
-                    <h1 className="display-4">Welcome to the Photo Gallery</h1>
-                    <p className="lead">Explore our collection of beautiful photos.</p>
+                    <h1 className="display-4">
+{ t('welcome') }</h1>
+                    <p className="lead"> {t('welcome2')}</p>
                 </div>
             </div>
         </div>
