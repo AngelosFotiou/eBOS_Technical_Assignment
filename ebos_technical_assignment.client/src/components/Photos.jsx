@@ -76,14 +76,7 @@ const Photos = () => {
         }
     };
 
-    //const handleEdit = async (photoId, newTitle) => {
-    //    try {
-    //        const response = await axios.put(`$${apiUrl}/api/Photos/${photoId}`, { title: newTitle });
-    //        setPhotos((prevPhotos) => prevPhotos.map(photo => photo.id === photoId ? response.data : photo));
-    //    } catch (error) {
-    //        console.error('Error editing photo', error);
-    //    }
-    //};
+
 const handleEditSubmit = async (e) => {
         e.preventDefault();
         try {

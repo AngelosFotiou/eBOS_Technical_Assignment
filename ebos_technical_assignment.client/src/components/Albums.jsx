@@ -9,11 +9,16 @@ const Albums = () => {
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true);
     const [isFirst, setisFirst] = useState(true);
+    
     const [error, setError] = useState(null);
     const [searchParams] = useSearchParams();
-    const apiUrl = '/api';///import.meta.env.VITE_API_URL; 
-    const [editAlbum, setEditAlbum] = useState(null);
+    const apiUrl = '/api';///import.meta.env.VITE_API_URL;
+    // const [editAlbum, setEditAlbum] = useState(null);
+    const [editAlbum, setEditAlbum] = useState(false);
     const [newAlbum, setNewAlbum] = useState({ title: '', userId: '' });
+    const [editingAlbum, setEditingAlbum] = useState(null);
+    const [newTitle, setNewTitle] = useState('');
+
 
     useEffect(() => {
         const fetchAlbums = async () => {
@@ -29,12 +34,15 @@ const Albums = () => {
             try {
                     const response = await axios.get(url);
                     if (response.data.length > 0) {
-                    setAlbums((prevAlbums) => [...response.data]);
+                        setAlbums((prevAlbums) => [...response.data]);
+                        setisFirst(false);
 
-                } else {
-                    setHasMore(false);
-               
-                }
+                    }
+                    else {
+                        setHasMore(false);
+                        setisFirst(false);
+
+                    }                
                 } catch (err) {
                 setError('Error fetching albums');
                 console.error('Error fetching Albums:', error);
@@ -75,17 +83,17 @@ if (error) {
     const handleAddAlbum = async () => {
         try {
             const response = await axios.post(`${import.meta.env.VITE_API_URL}/albums`, newAlbum);
-            setAlbums((prevAlbums) => [...prevAlbums, response.data]);
-            setNewAlbum({ title: '', userId: '' });
+            setAlbums((prevAlbums) => [response.data]);
+            //setNewAlbum({ title: '', userId: '' });
         } catch (error) {
             console.error('Error adding album', error);
         }
     };
 
-    const handleNewAlbumChange = (e) => {
-        const { name, value } = e.target;
-        setNewAlbum((prevAlbum) => ({ ...prevAlbum, [name]: value }));
-    };
+    //const handleNewAlbumChange = (e) => {
+    //    const { name, value } = e.target;
+    //    setNewAlbum((prevAlbum) => ({ ...prevAlbum, [name]: value }));
+    //};
 
 
     const handleDeleteAlbum = async (albumId) => {
@@ -98,35 +106,19 @@ if (error) {
     };
 
     const handleEditAlbum = (album) => {
-        setEditAlbum({ ...album });
+        setEditingAlbum(album);
+       // setEditingAlbum(true)
+        setNewTitle(album.title);
     };
 
-    const handleEditAlbumChange = (e) => {
-        const { name, value } = e.target;
-        setEditAlbum((prevAlbum) => ({ ...prevAlbum, [name]: value }));
-    };
-
-    const handleEditAlbumSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.put(`${apiUrl}/api/Albums/${editAlbum.id}`, editAlbum);
-            setAlbums((prevAlbums) => prevAlbums.map(album => album.id === editAlbum.id ? response.data : album));
-            setEditAlbum(null);
-        } catch (error) {
-            setError('Error editing album', error);
-        }
-    };
 
     const handleLoadMore = () => {
         setPage((prevPage) => prevPage + 1);
-        setisFirst(false);
-
     };
-
     const LoadPrevMore = () => {
         setPage((prevPage) => {
             if (prevPage > 0) {
-                setHasMore(true);
+                //setHasMore(true);
                 return prevPage - 1;
             } else {
                 setisFirst(true);
@@ -136,29 +128,42 @@ if (error) {
     };
 
     return (           
-        
- 
-        <div className="container">
+        <div className="container mt-5">
             <div>
                 <Link to="/create-album" className="btn btn-primary m-2">Create Album</Link>
-            </div> <div className="row row-cols-1 row-cols-md-3 g-4"> {
-                albums.map(album => (<div key={album.id} className="col">
-                    <div className="card h-100"> <div className="card-body">
-                        <p className="card-text">{album.title}</p>
-                        <Link to={`/photos?albumId=${album.id}`}
-                            className="btn btn-success m-2">Albums Photos</Link>
-                        <p className="card-text">Image Count: {album.photoCount}
-                        </p> <button className="btn btn-danger m-2" onClick={() => handleDeleteAlbum(album.id)}>Delete</button>
-                        <button className="btn btn-warning m-2" onClick={() => handleEditAlbum(album)}>Edit</button>
-                    </div> </div> </div>))} </div> <div className="d-flex justify-content-between mt-4">
-                {!isFirst && (<button className="btn btn-primary" onClick={LoadPrevMore}>
-                    Load Previous Set
-                </button>)}
-                {hasMore && (<button className="btn btn-primary" onClick={handleLoadMore}>
-                    Load Next Set
-                </button>)}
             </div>
-        </div> 
+            <div className="row row-cols-1 row-cols-md-3 g-4">
+                {albums.map((album) => (
+                    <div key={album.id} className="col">
+                        <div className="card h-100">
+                            <div className="card-body">
+                                <p className="card-text">{album.title}</p>
+                                <Link to={`/photos?albumId=${album.id}`} className="btn btn-success m-2"> Albums Photos </Link>
+                                <p className="card-text">Image Count: {album.photoCount}</p>
+                                <button className="btn btn-danger m-2" onClick={() => handleDeleteAlbum(album.id)}>Delete</button>
+                                <button className="btn btn-warning m-2" onClick={() => handleEditAlbum(album)}>Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div class="btn-group">
+            {/*<div className="d-flex justify-content-between mt-4">*/}
+                {!isFirst && (
+                    <button className="btn btn-primary" onClick={LoadPrevMore}>
+                        Load Previous Set
+                    </button>
+                )}
+         {/*   </div>*/}
+            {/*<div className="d-flex justify-content-between mt-4"> */}
+                {hasMore && (
+                    <button className="btn btn-primary" onClick={handleLoadMore}>
+                        Load Next Set
+                    </button>
+                )}
+            </div>
+        </div>
+
     );
 };
 export default Albums;
